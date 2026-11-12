@@ -1,0 +1,4 @@
+webchat/node_modules
+webchat/dist
+webchat/hashes.txt
+**/*.asc

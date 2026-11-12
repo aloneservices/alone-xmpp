@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Alone Services · Legal and privacy</title>
+<link rel="stylesheet" href="alone.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="back" target="_top" href="https://alo.ne">← alo.ne</a>
+  <div class="pills">
+    <a class="pill on" href="/">Privacy</a>
+    <a class="pill" target="_top" href="https://alo.ne/legal/terms">Terms</a>
+    <a class="pill" target="_top" href="https://check.alo.ne">Code check</a>
+  </div>
+</div>
+
+<main class="page">
+  <header class="hero">
+    <h1>Legal &amp; <span class="gradient">privacy</span></h1>
+    <p class="lead">What we store, what we don't, and what we could technically see.
+      We don't care to lie for marketing purposes.</p>
+    <div class="meta">
+      <span class="mono">Last updated · 12 Nov 2026</span>
+      <span>·</span>
+      <a target="_top" href="https://check.alo.ne">Check our code →</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="toc">
+      <nav>
+        <p class="label">Contents</p>
+        <a href="#where">Where data lives</a>
+        <a href="#never">What we never keep</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#files">File host</a>
+        <a href="#email">Email</a>
+        <a href="#chat">Chat</a>
+        <a href="#payments">Payments</a>
+        <a href="#requests">Legal requests</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
+
+    <div class="content">
+      <section id="where">
+        <div class="section-head"><span class="badge">01</span><h2>Where your data lives</h2></div>
+        <table>
+          <tr><th>Service</th><th>Location</th></tr>
+          <tr><td>Dashboard, accounts and payments</td><td>United Kingdom</td></tr>
+          <tr><td>File host storage</td><td>United Kingdom Local</td></tr>
+          <tr><td>Email (mx1 and mx2)</td><td>United Kingdom</td></tr>
+          <tr><td>Email backups</td><td>United Kingdom</td></tr>
+          <tr><td>Chat (XMPP, IRC and the webchat), this page and the code check</td><td>Canada</td></tr>
+        </table>
+        <p>The alo.ne website and API go through Cloudflare (a US company) for protection against attacks. The chat
+          server, the mail servers, this page and the code check don't: you connect to them directly.</p>
+      </section>
+
+      <section id="never">
+        <div class="section-head"><span class="badge">02</span><h2>What we never keep</h2></div>
+        <ul>
+          <li>IP addresses. Not in logs, not in the database. Mail and chat servers run with logging off.</li>
+          <li>Access logs or tracking. No analytics, no ad trackers, no fingerprinting.</li>
+          <li>Your passwords in readable form. Dashboard passwords are stored as a one-way argon2id hash.</li>
+        </ul>
+      </section>
+
+      <section id="dashboard">
+        <div class="section-head"><span class="badge">03</span><h2>Dashboard and account</h2></div>
+        <div class="data"><span class="tag">Account</span><p>Username, a hash of your password, your 2FA secret if
+          2FA is on, membership and storage limits, email address and aliases if you use email, biolink profile and
+          badges, referral and reseller records, invite codes, credits and items, and your Discord ID and username if
+          you link Discord.</p></div>
+        <div class="data"><span class="tag">Biolink views</span><p>Your IP is used briefly, in memory only, so one
+          visit counts once. It's never saved.</p></div>
+        <div class="callout"><b>Technically, we can see:</b> everything listed above. Cloudflare sits in front of
+          the website and API, so it sees your IP and the requests you make there. Your passwords (dashboard, email,
+          webmail and chat) are encrypted in your browser with a key only our server holds before they're sent, so
+          Cloudflare only sees scrambled data. That code is itself delivered through Cloudflare, so you can check it
+          hasn't been changed at <a target="_top" href="https://check.alo.ne">check.alo.ne</a>, which doesn't go through
+          Cloudflare. Cloudflare does see the short-lived (5-minute) login tokens your browser sends with each
+          request.</div>
+      </section>
+
+      <section id="files">
+        <div class="section-head"><span class="badge">04</span><h2>File host</h2></div>
+        <p>Files sent through chat are deleted after 30 days, and you can delete any file whenever you like. Upload
+          dates are hidden if you choose "remove timestamps".</p>
+        <div class="data"><span class="tag">Files</span><p>Your files, their names, sizes and types, and the folders
+          and shares you create.</p></div>
+        <div class="data"><span class="tag">Encrypted uploads</span><p>Encrypted in your browser before upload. We
+          only ever have scrambled data, and the key stays in your link.</p></div>
+        <div class="data"><span class="tag">Reports</span><p>If someone reports an encrypted file and includes its
+          key, our moderators can open that one file, and we keep the key for moderation.</p></div>
+        <div class="callout"><b>Technically, we can see:</b> normal uploads, and the names, sizes and types of all
+          files. We can't open encrypted uploads without the key. The key stays in the part of the link after
+          <code>#</code>, which browsers never send to us or to Cloudflare.</div>
+      </section>
+
+      <section id="email">
+        <div class="section-head"><span class="badge">05</span><h2>Email</h2></div>
+        <p>Mail servers keep no logs by default. If we need to debug a specific problem, we turn logging on for a set
+          time (usually 2 hours), and it's wiped when it switches off. Outgoing mail has your app name and your IP
+          removed from its headers.</p>
+        <div class="data"><span class="tag">Storage</span><p>All mail sits on encrypted disks. With encrypted storage
+          turned on, new mail is also encrypted with your own key, which is locked with your mail password.</p></div>
+        <div class="data"><span class="tag">Backups</span><p>Taken every 6 hours, encrypted, and kept for up to 12
+          months. Mail you delete can stay in older backups until they expire. With encrypted storage on, your mail
+          stays encrypted inside the backups too.</p></div>
+        <div class="callout"><b>Technically, we can see:</b> mail stored without encrypted storage, while the servers
+          are running. Senders, recipients and subjects of mail passing through. Your mail password when you log in,
+          because the mail server has to check it. With encrypted storage on, we can't read stored mail without your
+          password, but a server that was changed to capture passwords could. Webmail encrypts your mail password
+          before it's sent, so Cloudflare can't read it, but our server decrypts it to log in to the mail server for
+          you.</div>
+      </section>
+
+      <section id="chat">
+        <div class="section-head"><span class="badge">06</span><h2>Chat (XMPP, IRC and the webchat)</h2></div>
+        <table>
+          <tr><th>What</th><th>How long the server keeps it</th></tr>
+          <tr><td>DMs</td><td>1 day, and only with your contacts by default. You can switch to all DMs or none.</td></tr>
+          <tr><td>Messages waiting for you while you're offline</td><td>Until they're delivered</td></tr>
+          <tr><td>Channel messages</td><td>30 days</td></tr>
+          <tr><td>Files sent in chat</td><td>30 days</td></tr>
+          <tr><td>IRC</td><td>Nothing</td></tr>
+          <tr><td>Your contact list</td><td>Until you remove the contact</td></tr>
+        </table>
+        <div class="data"><span class="tag">Encrypted DMs (OMEMO)</span><p>Turn on OMEMO and your DMs and files are
+          encrypted on your device. The server only ever sees scrambled data.</p></div>
+        <div class="data"><span class="tag">Chat password</span><p>Stored only in a form that can check it, never
+          readable. Apps prove they know it without sending it.</p></div>
+        <div class="data"><span class="tag">Bridged channels</span><p>#general and #suggestions are copied to
+          Discord, Telegram and IRC. #premium is copied only to premium-only channels on Discord, Telegram and our IRC.
+          Those copies follow those platforms' rules, not ours. DMs are never copied.</p></div>
+        <div class="data"><span class="tag">Other servers</span><p>You can talk to people and join rooms on other XMPP
+          servers. Anything you send there is also handled by that server and follows its rules, not ours. With OMEMO
+          it only gets scrambled data, but it still sees your address and when you message. Your IP address is never
+          passed on. Our member channels are only open to alo.ne accounts.</p></div>
+        <div class="data"><span class="tag">Public rooms</span><p>#lobby and #pl (privacy &amp; legal) are open to anyone,
+          on XMPP and on irc.alo.ne, and are copied between the two only. Anything said there is public and kept for 30
+          days like our other channels. On XMPP only moderators can see your real address. On IRC, if you log in, your
+          account is visible to others, so connect without logging in and use a different nick for more privacy. #pl is
+          people sharing experience, not legal advice.</p></div>
+        <div class="data"><span class="tag">Checking our code</span><p>We publish signed hashes of the webchat and
+          dashboard code on GitHub, Discord and Telegram. Check them yourself at
+          <a target="_top" href="https://check.alo.ne">check.alo.ne</a> or with the commands in each signed message. For the
+          strongest protection, use an app such as Conversations, Monal or Gajim.</p></div>
+        <div class="callout"><b>Technically, we can see:</b> who messages whom, as it happens, because the server has
+          to know where to deliver each message. We don't log it. We can also see the content of channel messages,
+          and of DMs and files sent without OMEMO, for as long as they're kept above. That includes messages to and
+          from people on other servers, which pass through ours on the way.</div>
+      </section>
+
+      <section id="payments">
+        <div class="section-head"><span class="badge">07</span><h2>Payments</h2></div>
+        <div class="data"><span class="tag">Crypto</span><p>We keep the order, the amount and the receiving address
+          we generated for it.</p></div>
+        <div class="data"><span class="tag">Cards</span><p>Handled by Mollie. We never see your card number. Mollie
+          keeps what card processors are required to keep.</p></div>
+        <div class="data"><span class="tag">Payouts</span><p>For referrals and sales, we keep the amount, the currency
+          and the transaction ID.</p></div>
+        <div class="callout"><b>Technically, we can see:</b> your orders and payment history with us, and anything
+          public on the blockchain about the addresses involved.</div>
+      </section>
+
+      <section id="requests">
+        <div class="section-head"><span class="badge">08</span><h2>Legal requests</h2></div>
+        <p>We only respond to valid legal process from a court or authority with jurisdiction over the server
+          involved, and we only hand over what this page says we have. Where the law allows, we tell the affected user
+          first. We can't hand over what we don't keep: no IP addresses, no access logs, no OMEMO-encrypted content,
+          and no DMs or channel messages past the times above.</p>
+        <p>Like any provider, we can be legally ordered to change what we collect from then on. If that ever happens,
+          this page and our announcements are where you'd see it, as far as the law lets us say.</p>
+      </section>
+
+      <section id="contact">
+        <div class="section-head"><span class="badge">09</span><h2>Contact</h2></div>
+        <div class="callout warn"><b>Legal, abuse, privacy and law enforcement:</b>
+          <a href="mailto:legal@alo.ne">legal@alo.ne</a>. This address works on every alo.ne domain and is read
+          daily.</div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <span>The luxury privacy-based service dedicated to safeguarding your information in style with our personalized bio-link service, file hosting, and email service.The luxury privacy-based service dedicated to safeguarding your information in style with our personalized bio-link service, file hosting, and email service.</span>
+    <span><a target="_top" href="https://alo.ne/legal/terms">Terms of service</a><a class="accent" href="mailto:legal@alo.ne">legal@alo.ne</a></span>
+  </footer>
+</main>
+</body>
+</html>

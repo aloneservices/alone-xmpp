@@ -1,0 +1,4 @@
+node_modules/
+dist/
+hashes.txt
+hashes.txt.asc

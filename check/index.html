@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Alone Services · Code check</title>
+<link rel="stylesheet" href="alone.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="https://alo.ne">← alo.ne</a>
+  <div class="pills">
+    <a class="pill" href="https://legal.alo.ne">Privacy</a>
+    <a class="pill" href="https://alo.ne/legal/terms">Terms</a>
+    <a class="pill on" href="/">Code check</a>
+  </div>
+</div>
+
+<main class="page">
+  <header class="hero">
+    <h1>Code <span class="gradient">check</span></h1>
+    <p class="lead">Checks that the code alo.ne serves right now matches the code we signed and published, so
+      nobody has quietly swapped it to capture passwords or encryption keys.</p>
+    <div class="meta">
+      <span class="mono">Served directly · not through Cloudflare</span>
+      <span>·</span>
+      <a href="https://legal.alo.ne">Legal &amp; privacy →</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="toc">
+      <nav>
+        <p class="label">Contents</p>
+        <a href="#run-check">Run the check</a>
+        <a href="#proves">What it proves</a>
+        <a href="#manual">Check it yourself</a>
+      </nav>
+    </aside>
+
+    <div class="content">
+      <section id="run-check">
+        <div class="section-head"><span class="badge">01</span><h2>Run the check</h2></div>
+        <p>This page
+          downloads every published file fresh and compares it with the hashes in our signed release list on GitHub,
+          which is outside cloudflare control.</p>
+        <noscript>
+          <div class="callout warn"><b>JavaScript is off.</b> The automatic check needs it, but you don't: follow
+            the manual steps under "Check it yourself", which only need a terminal with <code>gpg</code>,
+            <code>curl</code> and <code>sha256sum</code>.</div>
+        </noscript>
+        <p><button class="button" id="run" hidden>Run the check</button> <span id="summary"></span></p>
+        <div id="results"></div>
+      </section>
+
+      <section id="proves">
+        <div class="section-head"><span class="badge">02</span><h2>What it proves</h2></div>
+        <div class="data"><span class="tag">It proves</span><p>The files served to this browser, right now, match
+          the release we signed.</p></div>
+        <div class="data"><span class="tag">It also catches</span><p>Any script the dashboard pages load that isn't
+          in the signed release, including one added on the way by Cloudflare or anyone else. Those show as NOT SIGNED.
+          It can't check the small inline scripts in each page, because they change on every request.</p></div>
+        <div class="data"><span class="tag">It doesn't prove</span><p>That a targeted attacker isn't serving
+          different files to a different browser or connection. Run it from the same browser and network you use
+          alo.ne on.</p></div>
+        <div class="data"><span class="tag">You can trust this page</span><p>The script is open source. Read
+          <a href="check.js">check.js</a>, or use the manual steps below.</p></div>
+      </section>
+
+      <section id="manual">
+        <div class="section-head"><span class="badge">03</span><h2>Check it yourself</h2></div>
+        <p>Every release list is signed with our PGP key. The key's fingerprint is published on GitHub, Discord and
+          keys.openpgp.org.</p>
+        <ul>
+          <li>Download the latest signed lists, <code>webchat.txt.asc</code> and <code>dashboard.txt.asc</code>, from
+            our public hashes repo on GitHub, or from the release posts in Discord or Telegram.</li>
+          <li>Run <code>gpg --verify webchat.txt.asc</code>. It must report a good signature from our key.</li>
+          <li>Follow the commands inside each list. They download every file and check it with
+            <code>sha256sum -c</code>. Every line must say OK.</li>
+        </ul>
+        <div class="callout warn"><b>If anything doesn't match:</b> don't enter passwords or send encrypted
+          messages through the website, and tell us at <a href="mailto:support@alo.ne">support@alo.ne</a>. For XMPP usage, device clients aren't affected as they do not go through cloudflare at all.</div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <span>The luxury privacy-based service dedicated to safeguarding your information in style with our personalized bio-link service, file hosting, and email service.The luxury privacy-based service dedicated to safeguarding your information in style with our personalized bio-link service, file hosting, and email service.</span>
+    <span><a href="https://legal.alo.ne">Legal &amp; privacy</a><a class="accent" href="mailto:support@alo.ne">support@alo.ne</a></span>
+  </footer>
+</main>
+<script src="check.js"></script>
+</body>
+</html>

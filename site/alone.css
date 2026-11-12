@@ -1,0 +1,115 @@
+/* Shared look for legal.alo.ne and check.alo.ne, matching alo.ne/legal on the dashboard */
+@font-face { font-family: 'Figtree'; src: url('fonts/figtree-latin-wght-normal.woff2') format('woff2'); font-weight: 300 900; font-display: swap; }
+@font-face { font-family: 'Radio Canada Big'; src: url('fonts/radio-canada-big-latin-wght-normal.woff2') format('woff2'); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: 'Geist Mono'; src: url('fonts/geist-mono-latin-wght-normal.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+
+:root {
+  --background: #141322;
+  --foreground: #e2e2ef;
+  --primary: #7c6bff;
+  --primary-light: #a89bff;
+  --surface: rgba(255, 255, 255, 0.04);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --text-muted: rgba(255, 255, 255, 0.45);
+  --text-faint: rgba(255, 255, 255, 0.22);
+  --ok: #4ade80;
+  --bad: #f87171;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font: 15px/1.65 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  overflow-x: clip;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: url('grain.png') repeat;
+  background-size: 200px 200px;
+  opacity: .05;
+}
+body::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 520px;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 55% at 50% -10%, rgba(124,107,255,0.12) 0%, rgba(124,107,255,0) 70%);
+}
+a { color: var(--primary-light); }
+code, .mono { font-family: 'Geist Mono', ui-monospace, monospace; }
+code { font-size: .9em; color: var(--foreground); }
+
+.topbar, .page { position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; padding-bottom: 24px; }
+.back { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text-muted); text-decoration: none; }
+.back:hover { color: var(--foreground); }
+.pills { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); }
+.pill { padding: 4px 14px; font-size: 12px; font-weight: 600; border-radius: 999px; color: var(--text-muted); text-decoration: none; border: 1px solid transparent; }
+.pill:hover { color: var(--foreground); }
+.pill.on { background: rgba(124,107,255,0.16); border-color: rgba(124,107,255,0.32); color: var(--primary-light); }
+
+.page { padding-top: 64px; padding-bottom: 96px; }
+.hero { max-width: 760px; margin-bottom: 64px; }
+.hero h1 { font-family: 'Radio Canada Big', sans-serif; font-weight: 600; line-height: 1.02; letter-spacing: -0.03em; font-size: clamp(2.5rem, 6vw, 4.25rem); margin: 0 0 16px; }
+.gradient { background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { font-size: 17px; max-width: 600px; color: var(--text-muted); margin: 0 0 16px; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font-size: 12px; color: var(--text-faint); }
+.meta .mono { text-transform: uppercase; letter-spacing: .12em; }
+.meta a { color: var(--text-faint); text-decoration: none; }
+.meta a:hover { color: var(--primary-light); }
+
+.layout { display: grid; grid-template-columns: 1fr; gap: 48px; }
+@media (min-width: 1024px) { .layout { grid-template-columns: 220px 1fr; } }
+.toc { display: none; }
+@media (min-width: 1024px) { .toc { display: block; } }
+.toc nav { position: sticky; top: 48px; }
+.toc a { display: block; padding: 8px 12px; border-radius: 8px; font-size: 13px; color: var(--text-muted); text-decoration: none; border-left: 2px solid transparent; }
+.toc a:hover { color: var(--primary-light); background: rgba(124,107,255,0.08); border-left-color: var(--primary-light); }
+.label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; color: var(--text-faint); margin: 0 0 12px; }
+
+.content { max-width: 720px; display: grid; gap: 64px; }
+section { scroll-margin-top: 96px; display: grid; gap: 16px; }
+.section-head { display: flex; align-items: center; gap: 12px; }
+.badge { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(124,107,255,0.14); border: 1px solid rgba(124,107,255,0.32); color: var(--primary-light); font: 600 11px 'Geist Mono', monospace; }
+h2 { font-family: 'Radio Canada Big', sans-serif; font-weight: 600; font-size: 22px; letter-spacing: -0.015em; margin: 0; }
+section > p, section li { color: var(--text-muted); margin: 0; }
+section ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; color: var(--text-faint); margin: 8px 0 0; }
+b, strong { color: var(--foreground); font-weight: 600; }
+
+.data { border-radius: 12px; padding: 16px; background: var(--surface); border: 1px solid var(--border-subtle); }
+.data .tag { display: block; font: 700 10px 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .18em; color: var(--primary-light); margin-bottom: 6px; }
+.data p { margin: 0; font-size: 13px; color: var(--text-muted); }
+
+.callout { border-radius: 12px; padding: 16px; font-size: 13px; color: var(--text-muted); background: rgba(124,107,255,0.06); border: 1px solid rgba(124,107,255,0.22); }
+.callout.warn { background: rgba(251,191,36,0.06); border-color: rgba(251,191,36,0.22); }
+.callout b:first-child { color: var(--primary-light); }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; color: var(--text-muted); }
+th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; color: var(--text-faint); }
+td:first-child { color: var(--foreground); }
+
+.button { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 18px; border-radius: 12px; border: 0; background: var(--primary); color: #fff; font: 600 14px 'Figtree', sans-serif; cursor: pointer; }
+.button:disabled { opacity: .5; cursor: default; }.muted { color: var(--text-muted); }
+[hidden] { display: none !important; }
+.ok { color: var(--ok); }
+.bad { color: var(--bad); }
+.results td { word-break: break-all; font-family: 'Geist Mono', monospace; font-size: 12px; }
+.results td.state { white-space: nowrap; font-weight: 700; width: 1%; }
+
+footer { margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--border-subtle); display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-size: 12px; color: var(--text-faint); }
+footer a { color: var(--text-muted); text-decoration: none; margin-left: 16px; }
+footer a:hover, footer a.accent { color: var(--primary-light); }

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Public XMPP and IRC rooms on alo.ne: an open lobby and a privacy and legal room. No account needed.">
+<title>alo.ne chat · Public rooms</title>
+<link rel="stylesheet" href="/public/alone.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="https://alo.ne">← alo.ne</a>
+  <div class="pills">
+    <a class="pill on" href="/">Public rooms</a>
+    <a class="pill" href="https://legal.alo.ne">Privacy</a>
+    <a class="pill" href="https://check.alo.ne">Code check</a>
+  </div>
+</div>
+
+<main class="page">
+  <header class="hero">
+    <h1>Public <span class="gradient">rooms</span></h1>
+    <p class="lead">Two rooms anyone can join, from any XMPP server or straight onto our IRC. No alo.ne account needed,
+      no ranks, nothing tying your nick to who you are.</p>
+    <div class="meta">
+      <span class="mono">XMPP and IRC · shared between both</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="toc">
+      <nav>
+        <p class="label">Contents</p>
+        <a href="#rooms">The rooms</a>
+        <a href="#xmpp">Join from XMPP</a>
+        <a href="#irc">Join from IRC</a>
+        <a href="#privacy">Staying private</a>
+        <a href="#rules">Rules</a>
+      </nav>
+    </aside>
+
+    <div class="content">
+      <section id="rooms">
+        <div class="section-head"><span class="badge">01</span><h2>The rooms</h2></div>
+        <table>
+          <tr><th>Room</th><th>What it's for</th></tr>
+          <tr><td><b>Lobby</b><br><span class="mono">lobby@conference.alo.ne</span><br><span class="mono">#lobby</span></td>
+            <td>Open chat about anything. Say hi, ask about alo.ne, hang out.</td></tr>
+          <tr><td><b>Privacy &amp; Legal</b><br><span class="mono">pl@conference.alo.ne</span><br><span class="mono">#pl</span></td>
+            <td>Swap privacy approaches, compare setups and ask legal questions about running or using privacy services.
+              People sharing experience, not legal advice.</td></tr>
+        </table>
+        <div class="data"><span class="tag">Shared</span><p>Each room is one conversation across XMPP and IRC. Messages are
+          copied between the two and nowhere else.</p></div>
+      </section>
+
+      <section id="xmpp">
+        <div class="section-head"><span class="badge">02</span><h2>Join from XMPP</h2></div>
+        <p>Use any XMPP account on any server, like Conversations, Monal, Gajim or Dino. Choose join group chat or join
+          channel, paste the address and pick any nick.</p>
+        <div class="data"><span class="tag">Lobby</span><p><span class="mono">lobby@conference.alo.ne</span></p></div>
+        <div class="data"><span class="tag">Privacy &amp; Legal</span><p><span class="mono">pl@conference.alo.ne</span></p></div>
+        <p>Have an alo.ne account? They're in the Public section of the chat on your dashboard too.</p>
+      </section>
+
+      <section id="irc">
+        <div class="section-head"><span class="badge">03</span><h2>Join from IRC</h2></div>
+        <table>
+          <tr><th>Setting</th><th>Value</th></tr>
+          <tr><td>Server</td><td><span class="mono">irc.alo.ne</span></td></tr>
+          <tr><td>Port</td><td><span class="mono">6697</span> with SSL on</td></tr>
+          <tr><td>Login</td><td>None needed for these rooms</td></tr>
+          <tr><td>Rooms</td><td><span class="mono">/join #lobby</span> and <span class="mono">/join #pl</span></td></tr>
+        </table>
+        <div class="callout"><b>Guests can't DM members.</b> Members only get private messages from logged in users.
+          If a member wants to talk to you they can <span class="mono">/accept</span> your nick.</div>
+      </section>
+
+      <section id="privacy">
+        <div class="section-head"><span class="badge">04</span><h2>Staying private</h2></div>
+        <div class="data"><span class="tag">XMPP</span><p>Only room moderators can see your real address. Everyone else
+          only sees your nick.</p></div>
+        <div class="data"><span class="tag">IRC</span><p>Your IP is never shown, everyone gets a cloaked host. If you log in
+          with an alo.ne account your account name is visible, so for these rooms connect without logging in and use a
+          nick that isn't your username.</p></div>
+        <div class="callout"><b>Technically, we can see:</b> everything said in these rooms, like anyone in them can. It's
+          kept for 30 days. We don't log IP addresses. Full details at <a href="https://legal.alo.ne">legal.alo.ne</a>.</div>
+      </section>
+
+      <section id="rules">
+        <div class="section-head"><span class="badge">05</span><h2>Rules</h2></div>
+        <p>Be decent. No spam, no illegal content, no doxxing. Moderators can mute, kick or ban anyone, from any server.
+          Report abuse to <a href="mailto:legal@alo.ne">legal@alo.ne</a>.</p>
+        <p>Want the members rooms, encrypted DMs, email and file hosting? <a href="https://alo.ne">Get an alo.ne account</a>.</p>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <span>The luxury privacy-based service dedicated to safeguarding your information in style with our personalized bio-link service, file hosting, and email service.The luxury privacy-based service dedicated to safeguarding your information in style with our personalized bio-link service, file hosting, and email service.</span>
+    <span><a href="https://legal.alo.ne">Privacy</a><a class="accent" href="mailto:legal@alo.ne">legal@alo.ne</a></span>
+  </footer>
+</main>
+</body>
+</html>
